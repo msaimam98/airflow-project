@@ -13,9 +13,11 @@
 After this command, we will be put into the container while its up and running 
 
 - To test the tasks out, we will use the airflow test command
-   - airflow test [DAG_id] [task_id] [any_date_in_the_past]\
-Running this in the container should give us the output we have specified in the task\
-The airflow test command runs task instances locally, outputs their log to stdout (on screen), doesn’t bother with dependencies, and doesn’t communicate state (running, success, failed, …) to the database
+   - airflow test [DAG_id] [task_id] [any_date_in_the_past]
+     - Running this in the container should give us the output we have specified in the task
+     - The airflow test command runs task instances locally, outputs their log to stdout (on screen), doesn’t bother with dependencies, and doesn’t communicate state (running, success, failed, …) to the database
 
 - To test the DAG and have the results show on the webserver, we will use the airflow backfill command
   - airflow backfill [DAG_id] -s [START_DATE] -e [END_DATE]
+    - The airflow backfill command will respect your dependencies, emit logs into files and talk to the database to record status. 
+    - If you do have a webserver up, you’ll be able to track the progress
