@@ -1,6 +1,6 @@
 # airflow-project
 
-## How to initialise an airflow container with a working DAG consisting of 3 tasks
+## How to initialise an airflow container with a working DAG 
 
 
 - docker run -d -p 8088:8080 -v ~/path/to/folder/with/Helloworld.py:/usr/local/airflow/dags puckel/docker-airflow webserver
