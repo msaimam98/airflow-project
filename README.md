@@ -3,7 +3,7 @@
 ## How to initialise an airflow container with a working DAG 
 
 
-- docker run -d -p 8088:8080 -v ~/path/to/folder/with/Helloworld.py:/usr/local/airflow/dags puckel/docker-airflow webserver
+- docker run -d -p 8088:8080 -v ~/path/to/folder/with/Helloworld.py:/usr/local/airflow/dags -v /usr/local/bin/docker:/usr/local/bin/docker -u 0 -v /var/run/docker.sock:/var/run/docker.sock puckel/docker-airflow webserver
   - This opens up a container with host port 8088 connected to the container at port 8080
   - This container has a volume mounted onto it that includes the python script with all tasks in the DAG
   - This container opens up a webserver to visualise and keep track of the DAG
