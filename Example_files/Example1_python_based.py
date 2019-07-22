@@ -69,7 +69,7 @@ default_args = {
     # 'end_date': datetime(2016, 1, 1),
 }
 
-dag = DAG('tut', default_args=default_args, schedule_interval=timedelta(days=1))
+dag = DAG('calc_draft_1', default_args=default_args, schedule_interval=timedelta(days=1))
 
 ON_CALLS = 1000
 OFF_CALLS = 1000
