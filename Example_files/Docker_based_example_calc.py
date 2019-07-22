@@ -44,7 +44,7 @@ t2 = PythonOperator(
     python_callable=print11,
     provide_context=True,
     templates_dict={
-        'a3': 5},
+        'a3': {{ ti.xcom_pull(task_ids='divide1_conv_on')}} },
     dag=dag
 )
 
