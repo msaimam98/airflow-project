@@ -21,3 +21,7 @@ After this command, we will be put into the container while its up and running
   - airflow backfill [DAG_id] -s [START_DATE] -e [END_DATE]
     - The airflow backfill command will respect your dependencies, emit logs into files and talk to the database to record status. 
     - If you do have a webserver up, you’ll be able to track the progress
+
+## How to make Example2 work properly
+
+- Build the dockerfile in the files_needed folder and call it useful2
