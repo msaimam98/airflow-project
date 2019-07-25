@@ -5,10 +5,7 @@
 from airflow import DAG
 from airflow.utils import dates as date
 from datetime import timedelta, datetime
-# from airflow.operators.dummy_operator import DummyOperator
-# from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
-# from airflow.utils.decorators import apply_defaults
 from airflow.operators.docker_operator import DockerOperator
 import json
 
@@ -26,17 +23,7 @@ default_args = {
   'retry_delay': timedelta(minutes=5),
   'provide_context': True # Provide_context is required when we're using XComs Airflow's concept to push and pull function results into an other task.
 }
-#
-#
-#
-# def get_tables(table_file="/tmp/daily", **kwargs):
-#     logging.info("######## Starting get_tables() function ########")
-#     logging.info("######## Load the table file into a new Pandas DataFrame ########")
-#     df_tables = pd.read_csv(table_file, names=["TABLES"])
-#     df_tables["TABLES"] = df_tables["TABLES"].str.strip()
-#     lst_tables_sqoop = df_tables["TABLES"].tolist()
-#     return lst_tables_sqoop
-#
+
 dag = DAG('docker_file1', default_args=default_args,
           schedule_interval=timedelta(days=1))
 
