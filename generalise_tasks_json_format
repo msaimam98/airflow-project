@@ -5,29 +5,33 @@
         {
           "ttl": [],
           "task_id": "divide1_conv_on",
-          "command": " \"divide\"  + str(OFF_SALES) + \" \" + str(OFF_CALLS)",
+          "command": "'divide '  + str(OFF_SALES) + ' ' + str(OFF_CALLS)",
           "xcom_push": "True",
+          "eval_command": "True",
           "dag": "dag",
           "image": "usage"
         },
         {
           "ttl": [],
           "task_id": "divide1_conv_off",
-          "command": " \"divide\"  + str(ON_SALES) + \" \" + str(ON_CALLS)",
+          "command": "'divide '  + str(ON_SALES) + ' ' + str(ON_CALLS)",
           "xcom_push": "True",
+          "eval_command": "True",
           "dag": "dag",
           "image": "usage"
         }
       ],
       "task_id": "numerator",
-      "command": "subtract {{ti.xcom_pull(task_ids=\"divide1_conv_on\")}} {{ti.xcom_pull(task_ids='divide1_conv_off')}}",
+      "command": "subtract {{ti.xcom_pull(task_ids=\"divide1_conv_on\")}} {{ti.xcom_pull(task_ids=\"divide1_conv_off\")}}",
       "xcom_push": "True",
+      "eval_command": "False",
       "dag": "dag",
       "image": "usage"
     }
   ],
   "task_id": "divide_results",
-  "command": "divide {{ti.xcom_pull(task_ids=\"numerator\")}} {{ti.xcom_pull(task_ids='divide1_conv_off')}}",
+  "command": "divide {{ti.xcom_pull(task_ids=\"numerator\")}} {{ti.xcom_pull(task_ids=\"divide1_conv_off\")}}",
+  "eval_command": "False",
   "xcom_push": "True",
   "dag": "dag",
   "image": "usage"
